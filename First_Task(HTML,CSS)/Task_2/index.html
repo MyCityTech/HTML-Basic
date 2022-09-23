@@ -4,25 +4,30 @@
 <head>
 
     <title>Task Two </title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.2.1/quartz/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.2.1/morph/bootstrap.min.css" crossorigin="anonymous">
 
-
+    <style>
+        .abcd {
+            text-align: center;
+            margin: 0 auto;
+        }
+    </style>
 
 </head>
 
 <body>
 
     <h2>Task Two Form</h2>
-    <form style="text-align:center;margin:0 auto;">
+    <form class="border m-5 p-5">
         <fieldset>
             <div class="form-group">
 
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="qw">
+                    <input type="email" class="form-control auto" id="qw" pattern="[a-zA-Z]+">
                     <label for="floatingInput1">First Name</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput2">
+                    <input type="email" class="form-control" id="floatingInput2" pattern="[a-zA-Z]+">
                     <label for="floatingInput2">Last Name</label>
                 </div>
                 <div class="form-floating mb-3">
@@ -30,7 +35,7 @@
                     <label for="floatingInput3">Email address</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput4">
+                    <input type="email" class="form-control" id="floatingInput4" pattern="[a-zA-Z]+">
                     <label for="floatingInput4">Address</label>
                 </div>
                 <div class="form-floating mb-3">
@@ -45,7 +50,7 @@
                 <option value="Chief Executive Officer">Chief Executive Officer</option>
                     <option value="Chief Operating Officer">Chief Operating Officer</option>
                     <option value="Chief Financial Officer
-                    ">Mercedes</option>
+                    ">Chief Financial Officer</option>
                     <option value="Chief Technology Officer
                     ">Chief Technology Officer</option>
 
@@ -63,7 +68,7 @@
                 <div class="form-group">
                     <div class="input-group mb-3">
                         <span class="input-group-text">$</span>
-                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                        <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
                         <span class="input-group-text">.00</span>
                     </div>
                 </div>
