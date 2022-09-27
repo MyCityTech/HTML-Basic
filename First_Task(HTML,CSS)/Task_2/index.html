@@ -5,7 +5,43 @@
 
     <title>Task Two </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.2.1/morph/bootstrap.min.css" crossorigin="anonymous">
+    <script>
+        function test() {
+            let fullName = document.getElementsByName('fullName')[0].value
+            let email = document.getElementsByName('email')[0].value
+            let address = document.getElementsByName('address')[0].value
+            let phone = document.getElementsByName('phone')[0].value
+            let salary = document.getElementsByName('salary')[0].value
+            let dob = document.getElementsByName('dob')[0].values
 
+
+            if (fullName == '' || email == '' || address == '' || phone == '' || salary == '' || dob == '') {
+                alert('Please Fill the form properly')
+                return;
+            }
+            if (salary < 3000 && salary > 300000) {
+
+                alert('You are either very rich or very poor')
+                return;
+
+            }
+            if (phone.length > 14) {
+                alert('Phone number should not be greater than 14')
+                return;
+            }
+            console.table({
+                "Full Name": fullName,
+                "Email": email,
+                "Address": address,
+                "Phone": phone,
+                "Salary": salary,
+                "Date Of Joining": dob
+
+
+            })
+            alert('Sucessfully Added')
+        }
+    </script>
     <style>
         .abcd {
             text-align: center;
@@ -81,7 +117,7 @@
 
 
 
-            <button type="button" class="btn btn-secondary">Submit</button>
+            <button type="button" class="btn btn-secondary" onclick="test()">Submit</button>
     </form>
 
 

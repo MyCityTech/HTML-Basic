@@ -52,23 +52,7 @@
                 "Salary": salary,
                 "Date Of Joining": dob
             })
-            localStorage.setItem('object', JSON.stringify({
-                "Full Name": fullName,
-                "Email": email,
-                "Address": address,
-                "Phone": phone,
-                "Salary": salary,
-                "Date Of Joining": dob
-            }))
-            var d = JSON.parse(localStorage.getItem('object'));
-            console.table(d);
 
-            document.getElementById('t1').innerText = d['Full Name']
-            document.getElementById('t2').innerText = d['Email'];
-            document.getElementById('t3').innerText = d['Address'];
-            document.getElementById('t4').innerText = d['Phone'];
-            document.getElementById('t5').innerText = d['Salary'];
-            document.getElementById('t6').innerText = d['Date Of Joining']
         }
     </script>
 </head>
