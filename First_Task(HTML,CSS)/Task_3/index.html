@@ -167,25 +167,25 @@
                 <div class="form-group">
 
                     <div class="form-floating mb-3">
-                        <input type="text" name="fullName" class="form-control auto" id="full-name" pattern="[a-zA-Z]+">
+                        <input type="text" name="fullName" class="form-control auto" id="full-name" pattern="[a-zA-Z]+" required>
                         <label for="floatingInput1">Full Name</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input name="email" type="email" class="form-control" id="floatingInput3">
+                        <input name="email" type="email" class="form-control" id="floatingInput3" required>
                         <label for="floatingInput3">Email address</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input name="address" type="email" class="form-control" id="floatingInput4" pattern="[a-zA-Z]+">
+                        <input name="address" type="email" class="form-control" id="floatingInput4" pattern="[a-zA-Z]+" required>
                         <label for="floatingInput4">Address</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input name="phone" type="tel" class="form-control" id="floatingInput5" pattern="^(?:(?:\+|0{0,2})977(\s*[\-]\s*)?|[0]?)?[789]\d{9}$">
+                        <input name="phone" type="tel" class="form-control" id="floatingInput5" pattern="^(?:(?:\+|0{0,2})977(\s*[\-]\s*)?|[0]?)?[789]\d{9}$" required>
                         <label for="floatingInput5">Phone No.</label>
                     </div>
                 </div>
 
 
-                <select name="designtion" class="form-select" aria-label="Default select example">
+                <select name="designtion" class="form-select" aria-label="Default select example" required>
                 <option selected>Designation</option>
                 <option value="Chief Executive Officer">Chief Executive Officer</option>
                     <option value="Chief Operating Officer">Chief Operating Officer</option>
@@ -221,7 +221,7 @@
                     <div class="form-group">
                         <div class="input-group mb-3">
                             <span class="input-group-text">$</span>
-                            <input name="salary" type="number" class="form-control" aria-label="Amount (to the nearest dollar)">
+                            <input name="salary" type="number" class="form-control" aria-label="Amount (to the nearest dollar)" required>
                             <span class="input-group-text">.00</span>
                         </div>
                     </div>
