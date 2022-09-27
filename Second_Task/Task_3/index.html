@@ -26,8 +26,9 @@
             let address = document.getElementsByName('address')[0].value
             let phone = document.getElementsByName('phone')[0].value
             let salary = document.getElementsByName('salary')[0].value
-            let dob = document.getElementsByName('dob')[0].values
-            console.log(fullName)
+            let dob = document.getElementsByName('dob')[0].value
+            let designtion = document.getElementsByName('designtion')[0].value
+            let working = document.getElementsByName('flexRadioDefault')[0].value
 
             if (fullName == '' || email == '' || address == '' || phone == '' || salary == '' || dob == '') {
                 alert('Please Fill the form properly')
@@ -39,10 +40,11 @@
                 return;
 
             }
-            if (phone.length > 14) {
-                alert('Phone number should not be greater than 14')
-                return;
-            }
+            //if (phone.length > 50) {
+            //alert('Phone number should not be greater than 14')
+            //  return;
+            //}
+
             alert('Sucessfully Added')
             console.log({
                 "Full Name": fullName,
@@ -50,7 +52,9 @@
                 "Address": address,
                 "Phone": phone,
                 "Salary": salary,
-                "Date Of Joining": dob
+                "Date Of Joining": dob,
+                "Working": working,
+                "Designation": designtion
             })
             let arrayOfObj = []
             localStorage.setItem('object', JSON.stringify({
@@ -59,7 +63,10 @@
                 "Address": address,
                 "Phone": phone,
                 "Salary": salary,
-                "Date Of Joining": dob
+                "Date Of Joining": dob,
+                "Working": working,
+                "Designation": designtion
+
             }))
             var d = JSON.parse(localStorage.getItem('object'));
             console.table(d);
@@ -70,6 +77,8 @@
             document.getElementById('t4').innerText = d['Phone'];
             document.getElementById('t5').innerText = d['Salary'];
             document.getElementById('t6').innerText = d['Date Of Joining']
+            document.getElementById('t7').innerText = d['Working']
+            document.getElementById('t8').innerText = d['Designation']
         }
     </script>
 </head>
@@ -226,13 +235,13 @@
               </select>
                 <br>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Working">
                     <label class="form-check-label" for="flexRadioDefault1">
                   Working
                 </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Not Working" checked>
                     <label class="form-check-label" for="flexRadioDefault2">
                   Not Working
                 </label>
@@ -261,35 +270,39 @@
 
                 <button type="button" onclick="test()" class="btn btn-secondary">Submit</button>
         </form>
-        <table class="table">
-            <thead>
-                <tr>
-
-                    <th scope="col">#</th>
-                    <th scope="col">Full Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Salary</th>
-                    <th scope="col">Date Of Joining</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td id="t1"></td>
-                    <td id="t2"></td>
-                    <td id="t3"></td>
-                    <td id="t4"></td>
-                    <td id="t5"></td>
-                    <td id="t6"></td>
-                </tr>
-
-            </tbody>
-        </table>
 
     </main>
 
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th scope="col">#</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Address</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Salary</th>
+                <th scope="col">Date Of Joining</th>
+                <th scope="col">Working Status</th>
+                <th scope="col">Designation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td id="t1"></td>
+                <td id="t2"></td>
+                <td id="t3"></td>
+                <td id="t4"></td>
+                <td id="t5"></td>
+                <td id="t6"></td>
+                <td id="t7"></td>
+                <td id="t8"></td>
+            </tr>
+
+        </tbody>
+    </table>
 
 </body>
 
