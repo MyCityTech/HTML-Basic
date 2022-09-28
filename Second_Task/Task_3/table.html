@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.2.1/morph/bootstrap.min.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <title>Table</title>
+    <script>
+        var d = JSON.parse(localStorage.getItem('object'));
+        console.table(d);
+        let ht = ``;
+        for (var i = 0; i < d.length; i++) {
+            ht = ht + `
+            <tr>
+                <th scope="row">1</th>
+                <td id="t1">${d['Full Name'][i]}</td>
+                <td id="t2">${d['Email'][i]}</td>
+                <td id="t3">${d['Address'][i]}</td>
+                <td id="t4">${d['Phone'][i]}</td>
+                <td id="t5">${d['Salary'][i]}</td>
+                <td id="t6">${d['Date Of Joining'][i]}</td>
+                <td id="t7">${d['Working'][i]}</td>
+                <td id="t8">${d['Designation'][i]}</td>
+                <td id="t9">${d['Remark'][i]}</td>
+            </tr>`
+        }
+
+        document.getElementById('tabCont').innerHTML = ht
+    </script>
+</head>
+
+<body>
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th scope="col">#</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Address</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Salary</th>
+                <th scope="col">Date Of Joining</th>
+                <th scope="col">Working Status</th>
+                <th scope="col">Designation</th>
+                <th scope="col">Remark</th>
+            </tr>
+        </thead>
+        <tbody id="tabCont">
+
+
+        </tbody>
+    </table>
+
+</body>
+
+</html>

@@ -18,6 +18,10 @@
         }
     </style>
     <script>
+        let arr = []
+        let ht = ``
+        let pl = 0
+
         function test() {
 
 
@@ -28,7 +32,8 @@
             let salary = document.getElementsByName('salary')[0].value
             let dob = document.getElementsByName('dob')[0].value
             let designtion = document.getElementsByName('designtion')[0].value
-            let working = document.getElementsByName('flexRadioDefault')[0].value
+            let remark = document.getElementsByName('remark')[0].value
+
 
             if (fullName == '' || email == '' || address == '' || phone == '' || salary == '' || dob == '') {
                 alert('Please Fill the form properly')
@@ -40,12 +45,9 @@
                 return;
 
             }
-            //if (phone.length > 50) {
-            //alert('Phone number should not be greater than 14')
-            //  return;
-            //}
 
-            alert('Sucessfully Added')
+
+
             console.log({
                 "Full Name": fullName,
                 "Email": email,
@@ -53,10 +55,22 @@
                 "Phone": phone,
                 "Salary": salary,
                 "Date Of Joining": dob,
-                "Working": working,
-                "Designation": designtion
+                "Working": 'working',
+                "Designation": designtion,
+                "Remark": remark
             })
-            let arrayOfObj = []
+            arr.push({
+                "Full Name": fullName,
+                "Email": email,
+                "Address": address,
+                "Phone": phone,
+                "Salary": salary,
+                "Date Of Joining": dob,
+                "Working": 'working',
+                "Designation": designtion,
+                "Remark": remark
+            })
+            console.log('Array', arr)
             localStorage.setItem('object', JSON.stringify({
                 "Full Name": fullName,
                 "Email": email,
@@ -64,21 +78,38 @@
                 "Phone": phone,
                 "Salary": salary,
                 "Date Of Joining": dob,
-                "Working": working,
-                "Designation": designtion
-
+                "Working": 'working',
+                "Designation": designtion,
+                "Remark": remark
             }))
             var d = JSON.parse(localStorage.getItem('object'));
             console.table(d);
 
-            document.getElementById('t1').innerText = d['Full Name']
-            document.getElementById('t2').innerText = d['Email'];
-            document.getElementById('t3').innerText = d['Address'];
-            document.getElementById('t4').innerText = d['Phone'];
-            document.getElementById('t5').innerText = d['Salary'];
-            document.getElementById('t6').innerText = d['Date Of Joining']
-            document.getElementById('t7').innerText = d['Working']
-            document.getElementById('t8').innerText = d['Designation']
+            ht = ht + `
+                <tr>
+                    <th scope="row">1</th>
+                    <td id="t1">${d['Full Name']}</td>
+                    <td id="t2">${d['Email']}</td>
+                    <td id="t3">${d['Address']}</td>
+                    <td id="t4">${d['Phone']}</td>
+                    <td id="t5">${d['Salary']}</td>
+                    <td id="t6">${d['Date Of Joining']}</td>
+                    <td id="t7">${d['Working']}</td>
+                    <td id="t8">${d['Designation']}</td>
+                    <td id="t9">${d['Remark']}</td>
+                </tr>`
+            document.getElementById('tabCont').innerHTML = ht
+
+            /*
+                        document.getElementById('t1').innerText = d['Full Name']
+                        document.getElementById('t2').innerText = d['Email'];
+                        document.getElementById('t3').innerText = d['Address'];
+                        document.getElementById('t4').innerText = d['Phone'];
+                        document.getElementById('t5').innerText = d['Salary'];
+                        document.getElementById('t6').innerText = d['Date Of Joining']
+                        document.getElementById('t7').innerText = d['Working']
+                        document.getElementById('t8').innerText = d['Designation']
+                        */
         }
     </script>
 </head>
@@ -241,14 +272,17 @@
                 </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Not Working" checked>
+                    <input class="form-check-input" type="radio" name="flexRadioDefaultOne" id="flexRadioDefault2" value="Not Working" checked>
                     <label class="form-check-label" for="flexRadioDefault2">
                   Not Working
                 </label>
                 </div>
 
 
-
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Remark</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="remark"></textarea>
+                </div>
 
                 <div class="form-group">
                     <label class="form-label mt-4">Salary</label>
@@ -286,20 +320,11 @@
                 <th scope="col">Date Of Joining</th>
                 <th scope="col">Working Status</th>
                 <th scope="col">Designation</th>
+                <th scope="col">Remark</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td id="t1"></td>
-                <td id="t2"></td>
-                <td id="t3"></td>
-                <td id="t4"></td>
-                <td id="t5"></td>
-                <td id="t6"></td>
-                <td id="t7"></td>
-                <td id="t8"></td>
-            </tr>
+        <tbody id="tabCont">
+
 
         </tbody>
     </table>
