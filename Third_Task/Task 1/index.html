@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel="icon" href="https://jcss-cdn.kantipurdaily.com/kantipurdaily/images/favicon.png" type="image/png">
+    <title>कान्तिपुर - नेपालको राष्ट्रिय दैनिक</title>
+
+    <link rel='stylesheet' href='https://jcss-cdn-npb.kantipurdaily.com/kantipurdaily/css/commonv181.css' />
+
+</head>
+
+<body>
+
+
+    <div id="pnl-alert-signup" style="display:none;">
+        <div class="pnl-alert-body">
+            <div class="alert-close" onclick="closeAlert('pnl-alert-signup');"><i class="icon-close"></i></div>
+            <form id="frm-alert-signup" class="formPanel">
+                <div class="mainTitle"><img src="https://jcss-cdn.kantipurdaily.com/kantipurdaily/images/publication.png" alt=""><span class="kantipurNetworkText">कान्तिपुर नेटवर्क</span><span class="signupText">साइन अप</span></div><a style="cursor:pointer" onclick="Auth.do_fb_login();"
+                    class="button secondary"><i class="icon-facebook"></i> <div class="signupWithFacebookText"> फेसबुकबाट साइन अप</div></a>
+                <div class="type-seprator"><span class="orText">अथवा</span></div>
+                <div><input type="text" onkeyup="submitRegister(event,'frm-alert-signup');" name="txtFullName" id="txtFullNameee" placeholder="पूरा नाम" required class="textfield fullnamePlaceholder txtFullName" /></div>
+                <div><input type="email" name="txtEmail" onkeyup="submitRegister(event,'frm-alert-signup');" id="txtEmaill1" placeholder="ई-मेल" required class="textfield loginFormEmail txtEmail" /></div>
+                <div><input minlength="5" onkeyup="submitRegister(event,'frm-alert-signup');" type="password" name="txtPassword" id="txtPassworddd" placeholder="पासवर्ड" required class="textfield loginFormPassword txtPassword" /></div>
+                <div class="default-btn signupText" onclick="Auth.do_register();" class="submit">साइन अप</div>
+                <div class="signUp doLoginText">तपाईंको खाता पहिले देखि छ ? <a onclick="openAccessAlert('pnl-alert-signin')">लगइन</a> गर्नुहोस् ।</div>
+                <div class="loading"><i class="icon-repeat margin-bottom" aria-hidden="true"></i></div>
+                <div class="success"></div>
+                <div class="error"></div>
+            </form>
+        </div>
+        <div class="pnl-body" onclick="closeAlert('pnl-alert-signup');"></div>
+    </div>
+    <div id="pnl-alert-signin" style="display:none;">
+        <div class="pnl-alert-body">
+            <div class="alert-close" onclick="closeAlert('pnl-alert-signin');"><i class="icon-close"></i></div>
+            <form id="frm-alert-signin" class="formPanel">
+                <div class="mainTitle"><img src="https://jcss-cdn.kantipurdaily.com/kantipurdaily/images/publication.png" alt=""><span class="kantipurNetworkText">कान्तिपुर नेटवर्क</span><span class="loginText">लगइन</span></div><span class="save-news-alert-message" style="display:none;">समाचार संग्रह गर्नको लागि लग इन गर्नुहोस् ।</span>
+                <div class="submit-quiz-alert-message" style="display:none;">
+                    <div class="image">
+                        <h1>तपाईंको अंक <span>?</span></h1><span>नेपालको मनोरम हिमश्रृंखला अवलोकनको भाग्यशाली अवसर</span></div>
+                    <p>नतिजा हेर्नको लागि लगइन गर्नुहोस् ।</p>
+                </div><a style="cursor:pointer" onclick="Auth.do_fb_login();" class="button secondary"><i class="icon-facebook"></i> <div class="loginWithFacebookText">फेसबुकबाट लगइन</div> </a><input type="hidden" id="login-trigger">
+                <div class="type-seprator"><span class="orText">अथवा</span></div>
+                <div><input type="email" onkeypress="submitLogin(event,'frm-alert-signin');" name="txtEmail" id="txtEmaill" placeholder="ई-मेल" class="textfield loginFormEmail txtEmail" required/></div>
+                <div><input type="password" onkeypress="submitLogin(event,'frm-alert-signin');" name="txtPassword" id="txtPasswordd" placeholder="पासवर्ड" class="textfield loginFormPassword txtPassword" required/></div>
+                <div class="forget-password-link" onclick="OpenPasswordRecovery();">पासवर्ड बिर्सनुभयो ?</div>
+                <div class="default-btn loginText" onclick="Auth.do_login('frm-alert-signin');" class="submit" id="login-btn">लगइन </div>
+                <div class="signUp doSignupText">तपाईंको खाता छैन ? &nbsp;<a onclick="openAccessAlert('pnl-alert-signup')">साइन अप</a> गर्नुहोस् । </div>
+                <div class="loading"><i class="icon-repeat margin-bottom" aria-hidden="true"></i></div>
+                <div class="success"></div>
+                <div class="error"></div>
+            </form>
+        </div>
+        <div class="pnl-body" onclick="closeAlert('pnl-alert-signin');"></div>
+    </div>
+    <div id="pnl-change-password" style="display:none;">
+        <div class="pnl-alert-body">
+            <div class="alert-close" onclick="closeAlert('pnl-change-password');"><i class="icon-close"></i></div>
+            <form id="frm-alert-changepwd" class="formPanel">
+                <div class="mainTitle"><img src="https://jcss-cdn.kantipurdaily.com/kantipurdaily/images/publication.png" alt=""><span class="kantipurNetworkText">कान्तिपुर नेटवर्क</span></div>
+                <div><input type="password" name="txtCurrentPassword" id="txtCurrentPassword" placeholder="पुरानो पासवर्ड" class="textfield txtCurrentPassword" /></div>
+                <div><input type="password" minlength="5" name="txtNewPassword" id="txtNewPassword" placeholder="नयाँ पासवर्ड" class="textfield txtNewPassword" /></div>
+                <div><input type="password" minlength="5" name="txtNewConfirmPassword" id="txtNewConfirmPassword" placeholder="पुन: पासवर्ड" class="textfield txtNewConfirmPassword" /></div>
+                <div class="default-btn passwordChangeBtnText" onclick="Auth.do_change_password();" class="submit">पासवर्ड परिवर्तन </div>
+                <div class="loading"><i class="icon-repeat margin-bottom" aria-hidden="true"></i></div>
+                <div class="success"></div>
+                <div class="error"></div>
+            </form>
+        </div>
+        <div class="pnl-body" onclick="closeAlert('pnl-change-password');"></div>
+    </div>
+    <div id="pnl-password-recovery" style="display:none;">
+        <div class="pnl-alert-body">
+            <div class="alert-close" onclick="closeAlert('pnl-password-recovery');"><i class="icon-close"></i></div>
+            <form id="frm-password-recovery" class="formPanel">
+                <div class="mainTitle"><img src="https://jcss-cdn.kantipurdaily.com/kantipurdaily/images/publication.png" alt=""><span class="kantipurNetworkText">कान्तिपुर नेटवर्क</span></div>
+                <div><input type="text" onkeypress="submitRecoverPassword(event,this);" name="txtEmail" id="txtEmai" placeholder="ई-मेल" class="textfield txtEmail loginFormEmail" /></div>
+                <div class="default-btn resetPasswordBtnText" onclick="Auth.do_forget_password();" class="submit">पासवर्ड रिसेट</div>
+                <div class="loading"><i class="icon-repeat margin-bottom" aria-hidden="true"></i></div>
+                <div class="success"></div>
+                <div class="error"></div>
+            </form>
+        </div>
+        <div class="pnl-body" onclick="closeAlert('pnl-password-recovery');"></div>
+    </div>
+    <div id="pnl-alert-advice" style="display:none;">
+        <div class="pnl-alert-body">
+            <div class="alert-close" onclick="closeAlert('pnl-alert-advice');"><i class="icon-close"></i></div>
+            <div class="mainTitle feedbackTitle">तपाईँको सल्लाह सुझाव</div>
+            <form id="frm-alert-advice" class="formPanel">
+                <div><input type="text" id="txtFullName" placeholder="पूरा नाम *" required class="textfield fullnamePlaceholder" /></div>
+                <div><input type="email" id="543txtEmail" placeholder="ई-मेल *" required class="txtEmail textfield loginFormEmail" /></div>
+                <div><textarea id="txer3tMessage" required placeholder="तपाइको सन्देश *" required class="txtMessage textarea yourMessagePlaceholder"></textarea></div>
+                <div class="loading"><i class="icon-repeat margin-bottom" aria-hidden="true"></i></div>
+                <div class="feedbackSuccessMessage success"></div>
+                <div class="feedbackErrorMessage error"></div>
+                <div data-action="feedback" class="default-btn submitText" onclick="sendAdviceAndContactUs(this);" class="submit">पठाउनुहोस</div>
+            </form>
+        </div>
+        <div class="pnl-body" onclick="closeAlert('pnl-alert-signup');"></div>
+    </div>
+    <div id="pnl-alert-contactus" style="display:none;">
+        <div class="pnl-alert-body">
+            <div class="alert-close" onclick="closeAlert('pnl-alert-contactus');"><i class="icon-close"></i></div>
+            <div class="mainTitle contactUsText">सम्पर्क गर्नुहोस्</div>
+            <form id="frm-alert-contact" class="formPanel">
+                <div><input type="text" name="txtFullName" id="12txtFullName" placeholder="पूरा नाम *" required class="txtFullName textfield fullnamePlaceholder" /></div>
+                <div><input type="email" name="txtEmail" id="1111txtEmail" placeholder="ई-मेल *" required class="txtEmail textfield loginFormEmail" /></div>
+                <div><textarea id="txtMessage" required placeholder="तपाइको सन्देश *" required class="textarea yourMessagePlaceholder"></textarea></div>
+                <div class="loading"><i class="icon-repeat margin-bottom" aria-hidden="true"></i></div>
+                <div class="contactusSuccessMessage success"></div>
+                <div class="contactusErrorMessage error"></div>
+                <div data-action="contactus" class="submitText default-btn" onclick="sendAdviceAndContactUs(this);">पठाउनुहोस</div>
+            </form>
+        </div>
+        <div class="pnl-body" onclick="closeAlert('pnl-alert-signup');"></div>
+    </div>
+    <noscript><img height="1" width="1" style="display:none"src="https://www.facebook.com/tr?id=1199855830026830&ev=PageView&noscript=1"/></noscript><noscript><div class="disableJavascript"><span>We're sorry, but this site doesn't work properly without JavaScript enabled!</span></div></noscript>
+    <header id="header">
+        <style>
+            .logo-white {
+                margin-left: 11% !important;
+            }
+            
+            .nav-trigger:checked~.navbar {
+                left: -16px;
+                width: 100%;
+                top: 44px;
+            }
+            
+            .mini-dashain {
+                background: url(https://jcss-cdn.kantipurdaily.com/kantipurdaily/images/dashain_banner_2.svg) no-repeat center bottom;
+            }
+        </style>
+        <div class="col-xs-11 col-sm-11 col-md-11">
+            <nav style="position:relative; z-index:2"><input type="checkbox" id="nav-trigger" class="nav-trigger hide" /><label for="nav-trigger" class="navbar-btn"><i class="icon-hamburger"></i></label>
+                <div class="navbar">
+                    <div class="searchbox"><input type="text" name="txtSearchBox" class="textfield searchBoxPlaceholder" id="txtSearchBox" placeholder="शीर्षक वा स्तम्भ खोज्नुहोस" onkeypress="handle(event)" /><i class="icon-search" onclick="searchSubmit()"></i>
+                        <div class="search-archive"><a href="/search/2022">कान्तिपुर अभिलेखालय</a></div>
+                    </div>
+                    <div class="main-left-menu">
+                        <div class="wrap scrollable">
+                            <ul>
+                                <li class="main titleText">शीर्षक </li>
+                                <li><a href="/">गृहपृष्ठ</a></li>
+                                <li><a href="https://ekantipur.com/news">समाचार</a></li>
+                                <li><a href="https://ekantipur.com/business">अर्थ / वाणिज्य</a></li>
+                                <li><a href="https://ekantipur.com/opinion">विचार</a></li>
+                                <li><a href="https://ekantipur.com/sports">खेलकुद</a></li>
+                                <li><a href="https://ekantipur.com/local-elections-2022">स्थानीय तह निर्वाचन २०७९</a></li>
+                                <li><a href="https://ekantipur.com/national">उपत्यका</a></li>
+                                <li><a href="https://ekantipur.com/koseli">कोसेली</a></li>
+                                <li><a href="https://ekantipur.com/world">विश्व</a></li>
+                                <li><a href="https://ekantipur.com/entertainment">मनोरञ्जन</a></li>
+                                <li><a href="https://ekantipur.com/blog">ब्लग</a></li>
+                                <li><a href="https://ekantipur.com/diaspora">प्रवास</a></li>
+                                <li><a href="https://ekantipur.com/feature">फिचर</a></li>
+                                <li><a href="https://ekantipur.com/photo_feature">फोटोफिचर</a></li>
+                                <li><a href="https://ekantipur.com/lifestyle">जीवनशैली</a></li>
+                                <li><a href="https://ekantipur.com/literature">साहित्य/विविध</a></li>
+                                <li><a href="https://ekantipur.com/technology">विज्ञान र प्रविधि</a></li>
+                                <li><a href="https://ekantipur.com/health">स्वास्थ्य</a></li>
+                                <li><a href="https://ekantipur.com/video">भिडियो</a></li>
+                                <li><a href="https://ekantipur.com/pathakmanch">सम्पादकलाई चिठी</a></li>
+                                <li><a href="https://ekantipur.com/Interview">कुराकानी</a></li>
+                                <li><a href="https://ekantipur.com/Art">कला</a></li>
+                                <li><a href="https://ekantipur.com/Other">अन्य</a></li>
+                                <li><a href="https://ekantipur.com/DASHAIN-ESPICAL">दसैं विशेष</a></li>
+                                <li><a href="https://ekantipur.com/market">बजार</a></li>
+                                <li class="main epaperText">इ-पत्रिका </li>
+                                <li><a href="https://epaper.ekantipur.com/kantipur" target="_blank" class="todaysEpaperText">आजको इ-पत्रिका </a></li>
+                                <li class="main">Language </li>
+                                <li><input class="english-radio" type="radio" name="lang" id="en" value="english" onclick="setLang('en');">&nbsp;<label for="en">English</label><br /><span>Set language to English <br />(Except News)</span></li>
+                                <li><input checked="true" class="nepali-radio" type="radio" name="lang" id="np" value="nepali" onclick="setLang('np');">&nbsp;<label for="np">नेपाली</label><br /><span>सबै सुचना तथा लिंक नेपालीमा हेर्नुहोस्</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <div class="logo-white mini-dashain">
+                <a href="https://ekantipur.com/"><img src="https://jcss-cdn.kantipurdaily.com/kantipurdaily/images/logo.png" alt="Kantipur Daily"></a>
+                </a>
+            </div>
+        </div>
+        <div class="setting col-xs-1 col-sm-1 col-md-1"><label for="setting-trigger" class="setting-btn" onclick="showSetting()"><div class="notification-wrap"><div id="pnlNotificationIcon" onclick="gaEvent('Notification Icon','Notification');"><i class="icon-profile user" aria-hidden="true"></i></div></div><span class="notification-count"> </span><div class="first-time-user"><i class="icon-arrow-r firsttime-icon"></i></div></label>
+            <div class="setting-wrap">
+                <div id="tab-panel-title-bar"><input id="tab-1" type="radio" name="tab-group" checked="checked" /><label onclick="loadPageParts('NewsDigest','content-1');" for="tab-1"><i class="icon-news-digest" aria-hidden="true"></i><div class="newsDigestTitleText">समाचार डाइजेस्ट</div></label><input
+                        id="tab-2" type="radio" name="tab-group" /><label onclick="loadPageParts('Extras','content-2');" for="tab-2"><i class="icon-miscellaneous" aria-hidden="true"></i><div class="extrasTitleText">विविध</div></label><input id="tab-3" type="radio"
+                        name="tab-group" /><label onclick="loadPageParts('Article','content-3');" for="tab-3"><i class="icon-post" aria-hidden="true"></i><div class="writeArticleTitleText">लेख लेख्नुहोस् </div></label><input id="tab-4" type="radio" name="tab-group"
+                    /><label onclick="loadPageParts('UserProfile','content-4');" for="tab-4"><i class="icon-profile" aria-hidden="true"></i><div class="profileTitleText">प्रोफाइल </div></label></div>
+                <div class="first-user-msg">कान्तिपुर नेटवर्कसँग आवद्ध हुनुभएकोमा धन्यवाद । <i class="icon-close" onclick="hideFirstUserMessage();"></i></div>
+                <div id="content">
+                    <div id="content-1" loaded="false" class="tabcontent recommend scrollable"></div>
+                    <div id="content-2" loaded="false" class="tabcontent utilities scrollable"></div>
+                    <div id="content-3" loaded="false" class="tabcontent scrollable"></div>
+                    <div id="content-4" loaded="false" class="tabcontent scrollable"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id="pnl-alert-not-published" style="z-index:9999;display:none;">
+        <div class="pnl-alert-body">
+            <div class="alert-close" onclick="closeAlert('pnl-alert-not-published');"><i class="icon-close"></i></div>
+            <p class="text"><span>तपाईको प्रतिक्रिया समीक्षामा भएकोले प्रकाशित भएको छैन&nbsp;। </span></p><a id="pnl-alert-news-link" href="#" class="btn btn-primary">लेख पढ्नुहोस्</a><span onclick="closeAlert('pnl-alert-not-published');" class="btn">रद्द</span></div>
+        <div class="pnl-body" onclick="closeAlert('pnl-alert-leave-article');"></div>
+    </div>
+
+    <style>
+        .colsLayout .linklist .image+.teaser {
+            margin-left: 94px !important;
+        }
+    </style>
+    <main>
+        <style>
+            #masthead .logo.special-bg {
+                background: url(https://jcss-cdn.kantipurdaily.com/kantipurdaily/images/dashain_banner-2078-desktop.svg) no-repeat center top;
+                background-size: contain;
+                height: 180px;
+                margin-top: 20px;
+            }
+        </style>
+        <section id="masthead">
+            <div class="logo special-bg">
+                <a href="https://ekantipur.com/"><img src="https://jcss-cdn.kantipurdaily.com/kantipurdaily/images/logo.png" alt="Kantipur Daily"></a><time onclick="showCalendar();">&#2407;&#2409; &#2310;&#2358;&#2381;&#2357;&#2367;&#2344; २०७९ &#2348;&#2367;&#2361;&#2368;&#2348;&#2366;&#2352; <span>Thursday, September 29, 2022</span></time></div>
+            <div id="nav-section">
+                <div class="title charchamaText">चर्चामा </div>
+                <div id="panelscroller">
+                    <ul>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','उज्यालो पूर्व');" href="https://ekantipur.com/tag/id-1560">उज्यालो पूर्व</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','बाढी-पहिरो');" href="https://ekantipur.com/tag/id-1469">बाढी-पहिरो</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','प्रधानन्यायाधीश विवादमा');" href="https://ekantipur.com/tag/id-1527">प्रधानन्यायाधीश विवादमा</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','आमनिर्वाचन २०७९');" href="https://ekantipur.com/tag/id-1554">आमनिर्वाचन २०७९</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','लीको नेपाल भ्रमण');" href="https://ekantipur.com/tag/id-1559">लीको नेपाल भ्रमण</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','कान्तिपुर कन्क्लेभ २०२२');" href="https://ekantipur.com/tag/id-1558">कान्तिपुर कन्क्लेभ २०२२</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','मेयर बालेन्द्र शाह');" href="https://ekantipur.com/tag/id-1557">मेयर बालेन्द्र शाह</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','काठमाडौं महानगर');" href="https://ekantipur.com/tag/id-1556">काठमाडौं महानगर</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','प्रखर दीप');" href="https://ekantipur.com/tag/id-1555">प्रखर दीप</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','एसपीपी');" href="https://ekantipur.com/tag/id-1550">एसपीपी</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','मौद्रिक नीति');" href="https://ekantipur.com/tag/id-1553">मौद्रिक नीति</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','बजेट २०७९/०८०');" href="https://ekantipur.com/tag/id-1549">बजेट २०७९/०८०</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','सरकारको नीति तथा कार्यक्रम');" href="https://ekantipur.com/tag/id-1548">सरकारको नीति तथा कार्यक्रम</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','स्थानीय तह निर्वाचन २०७९');" href="https://ekantipur.com/tag/id-1537">स्थानीय तह निर्वाचन २०७९</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','मधेसको मान');" href="https://ekantipur.com/tag/id-1547">मधेसको मान</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','वर्ष समीक्षा २०७८');" href="https://ekantipur.com/tag/id-1546">वर्ष समीक्षा २०७८</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','नेपाल क्रिकेट');" href="https://ekantipur.com/tag/id-1545">नेपाल क्रिकेट</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','कान्तिपुर एजुकेसन समिट');" href="https://ekantipur.com/tag/id-1544">कान्तिपुर एजुकेसन समिट</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','लुम्बिनीको सामर्थ्य');" href="https://ekantipur.com/tag/id-1543">लुम्बिनीको सामर्थ्य</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','एमसीसी');" href="https://ekantipur.com/tag/id-1518">एमसीसी</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','युक्रेन-रुस तनाव');" href="https://ekantipur.com/tag/id-1541">युक्रेन-रुस तनाव</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','पल शाह');" href="https://ekantipur.com/tag/id-1542">पल शाह</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','कान्तिपुर २९ औं वार्षिकोत्सव विशेष');" href="https://ekantipur.com/tag/id-1540">कान्तिपुर २९ औं वार्षिकोत्सव विशेष</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','ट्वान्टी–२० विश्वकप छनोट');" href="https://ekantipur.com/tag/id-1539">ट्वान्टी–२० विश्वकप छनोट</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','स्थानीय तह समीक्षा');" href="https://ekantipur.com/tag/id-1538">स्थानीय तह समीक्षा</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','कोरोना भाइरस');" href="https://ekantipur.com/tag/id-1425">कोरोना भाइरस</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','ए डिभिजन लिग');" href="https://ekantipur.com/tag/id-1530">ए डिभिजन लिग</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','चुनाव');" href="https://ekantipur.com/tag/id-1535">चुनाव</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','विश्व क्यान्सर दिवस');" href="https://ekantipur.com/tag/id-1536">विश्व क्यान्सर दिवस</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','ललिता निवास');" href="https://ekantipur.com/tag/id-1284">ललिता निवास</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','माओवादी महाधिवेशन');" href="https://ekantipur.com/tag/id-1532">माओवादी महाधिवेशन</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','श्रम गन्तव्य र आर्थिक मन्थन');" href="https://ekantipur.com/tag/id-1534">श्रम गन्तव्य र आर्थिक मन्थन</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','एमाले महाधिवेशन');" href="https://ekantipur.com/tag/id-1528">एमाले महाधिवेशन</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','कांग्रेस महाधिवेशन');" href="https://ekantipur.com/tag/id-1516">कांग्रेस महाधिवेशन</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','माओवादी राष्ट्रिय सम्मेलन');" href="https://ekantipur.com/tag/id-1533">माओवादी राष्ट्रिय सम्मेलन</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','राप्रपा महाधिवेशन');" href="https://ekantipur.com/tag/id-1529">राप्रपा महाधिवेशन</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','जनगणना');" href="https://ekantipur.com/tag/id-1521">जनगणना</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','कोरोना खोप');" href="https://ekantipur.com/tag/id-1484">कोरोना खोप</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','बेमौसमी वर्षाको असर');" href="https://ekantipur.com/tag/id-1526">बेमौसमी वर्षाको असर</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','ईपीएल');" href="https://ekantipur.com/tag/id-1524">ईपीएल</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','बुद्ध एयर प्रकरण');" href="https://ekantipur.com/tag/id-1523">बुद्ध एयर प्रकरण</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','दसैं २०७८');" href="https://ekantipur.com/tag/id-1525">दसैं २०७८</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','एमाले विधान महाधिवेशन');" href="https://ekantipur.com/tag/id-1522">एमाले विधान महाधिवेशन</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','संविधान विशेष');" href="https://ekantipur.com/tag/id-1520">संविधान विशेष</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','प्रतिस्थापन विधेयक');" href="https://ekantipur.com/tag/id-1519">प्रतिस्थापन विधेयक</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','संसद्‌ अधिवेशन');" href="https://ekantipur.com/tag/id-1517">संसद्‌ अधिवेशन</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','अफगान द्वन्द्व');" href="https://ekantipur.com/tag/id-1512">अफगान द्वन्द्व</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','एमाले');" href="https://ekantipur.com/tag/id-1501">एमाले</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','राजनीतिक दल सम्बन्धी अध्यादेश');" href="https://ekantipur.com/tag/id-1514">राजनीतिक दल सम्बन्धी अध्यादेश</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','प्रतिनिधिसभा विघटन मुद्दा');" href="https://ekantipur.com/tag/id-1509">प्रतिनिधिसभा विघटन मुद्दा</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','लुम्बिनी प्रदेश');" href="https://ekantipur.com/tag/id-1505">लुम्बिनी प्रदेश</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','बजेट २०७८');" href="https://ekantipur.com/tag/id-1507">बजेट २०७८</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','प्रतिनिधिसभा पुनःस्थापना');" href="https://ekantipur.com/tag/id-1498">प्रतिनिधिसभा पुनःस्थापना</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','प्रदेश बजेट २०७८');" href="https://ekantipur.com/tag/id-1508">प्रदेश बजेट २०७८</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','म्यानमारमा सैनिक कु');" href="https://ekantipur.com/tag/id-1494">म्यानमारमा सैनिक कु</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','मुख्यमन्त्री गुरुङविरुद्ध अविश्वास प्रस्ताव');" href="https://ekantipur.com/tag/id-1503">मुख्यमन्त्री गुरुङविरुद्ध अविश्वास प्रस्ताव</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','संसद् विघटन');" href="https://ekantipur.com/tag/id-1490">संसद् विघटन</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','अध्यादेश');" href="https://ekantipur.com/tag/id-1454">अध्यादेश</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','स्वास्थ्य सामग्री खरिद प्रकरण');" href="https://ekantipur.com/tag/id-1453">स्वास्थ्य सामग्री खरिद प्रकरण</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','कान्तिपुर कन्क्लेभ');" href="https://ekantipur.com/tag/id-1429">कान्तिपुर कन्क्लेभ</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','बालुवाटार जग्गा प्रकरण (ललिता निवास)');" href="https://ekantipur.com/tag/id-1326">बालुवाटार जग्गा प्रकरण (ललिता निवास)</a></li>
+                        <li class=""><a onclick="gaEvent('Kantipur Trending Tags','Clicked','बालुवाटार जग्गा प्रकरण');" href="https://ekantipur.com/tag/id-1280">बालुवाटार जग्गा प्रकरण</a></li>
+                    </ul>
+                </div>
+            </div>
+            <a style="display:none;" id="openCalendar" href="#calender_section"></a>
+        </section>
+
+        <a class="static-sponsor" target="_blank" onclick="gaEvent('Berger Paint 26th Aug 2022 (Updated)','home','clicked');" href="https://rangotsav.bergernepal.com/"><img src="https://assets-cdn.kantipurdaily.com/uploads/source/ads/ekantipur-970-x-120-gif-2682022054217.gif"></a>
+        <div id="thirdparty-content">
+            <div class='loading'></div>
+        </div>
+        <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+        <script>
+            window.googletag = window.googletag || {
+                cmd: []
+            };
+            googletag.cmd.push(function() {
+                googletag.defineSlot("/151755912/ad_new_size_970x110", [970, 120], "div-gpt-ad-1633419446735-0").setCollapseEmptyDiv(true, true).addService(googletag.pubads());
+                googletag.pubads().enableSingleRequest();
+                googletag.enableServices();
+            });
+        </script>
+        <div id="div-gpt-ad-1633419446735-0">
+            <script>
+                googletag.cmd.push(function() {
+                    googletag.display("div-gpt-ad-1633419446735-0");
+                });
+            </script>
+        </div>
+        <style>
+            .main-news.layout3 {
+                overflow: unset;
+            }
+            
+            .layout3 h1 {
+                font-size: 3.2em;
+            }
+            
+            article[data-ekan-top="1"],
+            article[data-ekan-top="1"]+article {
+                clear: both;
+            }
+            
+            article[data-ekan-top="1"] .meta-links,
+            article[data-ekan-top="1"] p,
+            article[data-ekan-top="1"] ul {
+                display: none;
+            }
+            
+            article[data-ekan-top="1"] {
+                border-bottom: 1px solid #ddd;
+                padding-bottom: 1.2em;
+                margin-top: 2em !important;
+            }
+            
+            article[data-ekan-top="1"] .image figure a {
+                display: block;
+                font-size: 0;
+            }
+            
+            .fa-eye {
+                cursor: pointer;
+            }
+            
+            .news-kicker {
+                text-align: center;
+                margin-bottom: 12px;
+            }
+            
+            .news-kicker span {
+                font-size: 1.16em;
+                padding: 3px 10px;
+                background: #0f6eb1;
+                color: #fff;
+            }
+        </style>
+        <section class="main-news layout3" attr-layout="layout3">
+            <article attr-imagerequired="0" id="i4U3oQv" data-ekan-top="1" data-sort-order="1" class="normal ui-draggable ui-draggable-handle ui-droppable home-top-news" attr-newsid="9600512" style="display: block;">
+                <div class="pnl-control extra-top-news"><a onclick="removeNews(this);" title="Remove"><i class="icon-close"></i></a></div><span class="remove-image"><i class="fa fa-image"></i></span><span class="remove-title"><i class="fa fa-eye"></i></span><span class="remove-kicker"><i class="fa fa-tag"></i></span>
+                <div class="news-kicker" data-type="kicker" style="display: block;"><span>सम्पादकीय</span></div>
+                <div style="display:none;" class="text-center main-news-tag-wrapper"><span class="main-news-tag">*****</span></div>
+                <h1 style="display: block;"><a data-type="title" onclick="gaEvent('Kantipur Top News','Clicked','कार्कीलाई प्रधानन्यायाधीशकै सुविधाले निम्त्याउने अनर्थ')" href="https://ekantipur.com/opinion/2022/09/29/16644156104089615.html">कार्कीलाई प्रधानन्यायाधीशकै सुविधाले निम्त्याउने अनर्थ</a></h1>
+                <div class="image" data-type="image" data-image-size="1000x0">
+                    <figure>
+                        <a href="https://ekantipur.com/opinion/2022/09/29/16644156104089615.html"><img src="//assets-cdn.kantipurdaily.com/uploads/source/news/kantipur/2022/third-party/acing-cj-deepak-karki-2952022094856-1000x0.jpg" alt="" style="display: none;"></a>
+                    </figure>
+                </div>
+                <p class="" data-type="summary" id="0" style="position: relative;" spellcheck="false">छ महिनाभन्दा बढी कायम मुकायम (कामु) प्रधानन्यायाधीश भएका व्यक्तिलाई प्रधानन्यायाधीशसरह सुविधा दिने भनी असोज ३ गते मन्त्रिपरिषद्ले गरेको निर्णय प्रथम दृष्टिमै खारेजयोग्य छ । कामु प्रधानन्यायाधीश दीपककुमार कार्कीलाई अवकाशपछि प्रधानन्यायाधीशसरह
+                    सुविधा दिन सरकारले गरेको यो निर्णय संसद्निर्मित कानुनसित सोझै बाझिन्छ । यसै पनि राज्यकोषमा अनुचित भार पर्ने गरी मन्त्रिपरिषद्ले मनपरी सुविधा बाँड्न मिल्दैन, त्यसमाथि सर्वोच्च अदालतका न्यायमूर्तिका लागि त झनै मिल्दैन । न्यायपालिकाका
+                    पदाधिकारीका लागि कार्यपालिकाले कानुनविपरीत सुविधा तोक्नु आफैंमा अनर्थकारी कदम हो । जसरी व्याख्या गरे पनि यसले संसदीय लोकतन्त्रको सौन्दर्यका रूपमा रहेको शक्ति पृथकीकरणको सिद्धान्त र अभ्यासलाई संकुचित तुल्याउँछ, न्यायालयको साख गिराउँछ ।
+                </p>
+                <div class="meta-links"><a data-type="save-news" style="cursor:pointer;" class="saveNewsLink" attr-newsid="9600512" onclick="saveNews('9600512',this);"><i class="icon-save"></i> संग्रह</a>
+                    <a class="shareText" data-type="share-news" style="cursor:pointer;" onclick="fbShare('https://ekantipur.com/opinion/2022/09/29/16644156104089615.html','कार्कीलाई प्रधानन्यायाधीशकै सुविधाले निम्त्याउने अनर्थ');"> <i class="icon-share"></i> सेयर</a>
+                </div>
+            </article>
+            <article attr-imagerequired="0" id="tKFi1LO" data-ekan-top="1" data-sort-order="1" class="normal ui-draggable ui-draggable-handle ui-droppable" attr-newsid="9600495" style="display: block;">
+                <div class="pnl-control extra-top-news"><a onclick="removeNews(this);" title="Remove"><i class="icon-close"></i></a></div><span class="remove-image"><i class="fa fa-image"></i></span><span class="remove-title"><i class="fa fa-eye"></i></span><span class="remove-kicker"><i class="fa fa-tag"></i></span>
+                <div class="news-kicker" data-type="kicker" style="display: block;"></div>
+                <div style="display:none;" class="text-center main-news-tag-wrapper"><span class="main-news-tag">*****</span></div>
+                <h1 style="display: block;"><a data-type="title" onclick="gaEvent('Kantipur Top News','Clicked','रक्सौल–काठमाडौं रेल ल्याउन ३ खर्ब २० अर्ब')" href="https://ekantipur.com/business/2022/09/29/166441319059196909.html">रक्सौल–काठमाडौं रेल ल्याउन ३ खर्ब २० अर्ब</a></h1>
+                <div class="image" data-type="image" data-image-size="1000x0">
+                    <figure>
+                        <a href="https://ekantipur.com/business/2022/09/29/166441319059196909.html"><img src="//assets-cdn.kantipurdaily.com/uploads/source/news/kantipur/2022/money-finance/raxaul-ktm-rail-2992022030445-1000x0.jpg" alt=""></a>
+                    </figure>
+                </div>
+                <p class="" data-type="summary" id="0" style="position: relative;" spellcheck="false">काठमाडौं–रक्सौल रेलमार्ग निर्माण गर्न ३ खर्ब २० अर्ब रुपैयाँ लाग्ने भएको छ । २०७६ मा गरिएको प्रारम्भिक अध्ययनअनुसार भने लागत अनुमान ३ खर्ब रुपैयाँ थियो । अहिले विस्तृत अध्ययनमार्फत सबै संरचना निर्माणमा लाग्ने खर्चसहितको लागत अनुमान निकालिएको
+                    हो ।
+                </p>
+                <div class="meta-links"><a data-type="save-news" style="cursor:pointer;" class="saveNewsLink" attr-newsid="9600495" onclick="saveNews('9600495',this);"><i class="icon-save"></i> संग्रह</a>
+                    <a class="shareText" data-type="share-news" style="cursor:pointer;" onclick="fbShare('https://ekantipur.com/business/2022/09/29/166441319059196909.html','रक्सौल–काठमाडौं रेल ल्याउन ३ खर्ब २० अर्ब');"> <i class="icon-share"></i> सेयर</a>
+                </div>
+            </article>
+            <article attr-imagerequired="0" id="IuJZB3O" data-ekan-top="1" data-sort-order="1" class="normal ui-draggable ui-draggable-handle ui-droppable" attr-newsid="9600493" style="display: block;">
+                <div class="pnl-control extra-top-news"><a onclick="removeNews(this);" title="Remove"><i class="icon-close"></i></a></div><span class="remove-image"><i class="fa fa-image"></i></span><span class="remove-title"><i class="fa fa-eye"></i></span><span class="remove-kicker"><i class="fa fa-tag"></i></span>
+                <div class="news-kicker" data-type="kicker" style="display: block;"></div>
+                <div style="display:none;" class="text-center main-news-tag-wrapper"><span class="main-news-tag">*****</span></div>
+                <h1 style="display: block;"><a data-type="title" onclick="gaEvent('Kantipur Top News','Clicked','डलरको भाउ १३१.४१ रुपैयाँ पुग्यो')" href="https://ekantipur.com/business/2022/09/29/166441155228034213.html">डलरको भाउ १३१.४१ रुपैयाँ पुग्यो</a></h1>
+                <div class="image" data-type="image" data-image-size="1000x0">
+                    <figure>
+                        <a href="https://ekantipur.com/business/2022/09/29/166441155228034213.html"><img src="//assets-cdn.kantipurdaily.com/uploads/source/news/kantipur/2022/third-party/dollar-faida-2992022023206-1000x0.jpg" alt=""></a>
+                    </figure>
+                </div>
+                <p class="" data-type="summary" id="0" style="position: relative;" spellcheck="false">अमेरिकी डलरको तुलनामा नेपाली मुद्रा (नेरु) अवमूल्यन हुने क्रमले बिहीबार पनि निरन्तरता पाएको छ । हरेक दिन अमेरिकी डलरको भाउ उकालो लागेपछि नेपाली मुद्रा हालसम्मकै कमजोर बनेको हो । नेपाल राष्ट्र बैंकले बिहीबारका लागि एक अमेरिकी डलरको विनिमयदर
+                    १३१.४१ रुपैयाँ (बिक्रीदर) तोकेको छ ।</p>
+                <div class="meta-links"><a data-type="save-news" style="cursor:pointer;" class="saveNewsLink" attr-newsid="9600493" onclick="saveNews('9600493',this);"><i class="icon-save"></i> संग्रह</a>
+                    <a class="shareText" data-type="share-news" style="cursor:pointer;" onclick="fbShare('https://ekantipur.com/business/2022/09/29/166441155228034213.html','डलरको भाउ १३१.४१ रुपैयाँ पुग्यो');"> <i class="icon-share"></i> सेयर</a>
+                </div>
+            </article>
+            <div id="layout_sponser_content"></div>
+            <div class="blocks" data-sort-order="2">
+                <article class="normal ui-draggable ui-draggable-handle ui-droppable" attr-newsid="9600498" style="display: block;" id="gqlAuQ0">
+                    <div class="image" data-type="image" data-image-size="240x158">
+                        <figure>
+                            <a href="https://ekantipur.com/news/2022/09/29/166441363516659876.html"><img src="//assets-cdn.kantipurdaily.com/uploads/source/news/kantipur/2022/third-party/hilaree-nelson-him-khadal-2992022031242-240x158.jpg" alt=""></a>
+                        </figure>
+                    </div>
+                    <h3><a data-type="title" onclick="gaEvent('Kantipur Top News','Clicked','६७ सय मिटर उचाइमा भेटियो स्की-पर्वतारोही हिलारीको शव')" href="https://ekantipur.com/news/2022/09/29/166441363516659876.html">६७ सय मिटर उचाइमा भेटियो स्की-पर्वतारोही हिलारीको शव</a></h3>
+                </article>
+                <article class="normal" attr-newsid="9600518" style="display: block;" id="UezgYTD">
+                    <div class="image" data-type="image" data-image-size="240x158">
+                        <figure>
+                            <a href="https://ekantipur.com/news/2022/09/29/166441646115844401.html"><img src="//assets-cdn.kantipurdaily.com/uploads/source/news/kantipur/2022/third-party/kapal-jharne-2992022035338-240x158.jpg" alt=""></a>
+                        </figure>
+                    </div>
+                    <h3><a data-type="title" onclick="gaEvent('Kantipur Top News','Clicked','डेंगीमुक्त भएकामा कपाल झर्ने समस्या&nbsp;')" href="https://ekantipur.com/news/2022/09/29/166441646115844401.html">डेंगीमुक्त भएकामा कपाल झर्ने समस्या&nbsp;</a></h3>
+                </article>
+                <article class="normal ui-draggable ui-draggable-handle ui-droppable" attr-newsid="9600500" style="display: block;" id="XwPO6wK">
+                    <div class="image" data-type="image" data-image-size="240x158">
+                        <figure>
+                            <a href="https://ekantipur.com/business/2022/09/29/166441387431254167.html"><img src="//assets-cdn.kantipurdaily.com/uploads/source/news/kantipur/2022/money-finance/naka-pic-2992022031429-240x158.jpg" alt=""></a>
+                        </figure>
+                    </div>
+                    <h3><a data-type="title" onclick="gaEvent('Kantipur Top News','Clicked','दसैं किनमेललाई सीमावर्ती भारतीय बजारमा घुइँचो')" href="https://ekantipur.com/business/2022/09/29/166441387431254167.html">दसैं किनमेललाई सीमावर्ती भारतीय बजारमा घुइँचो</a></h3>
+                </article>
+                <article class="normal" attr-newsid="9600499" style="display: block;" id="bqCIWhg">
+                    <div class="image" data-type="image" data-image-size="240x158">
+                        <figure>
+                            <a href="https://ekantipur.com/business/2022/09/29/166441366455012642.html"><img src="//assets-cdn.kantipurdaily.com/uploads/source/news/kantipur/2022/money-finance/electrics-bus-2992022030920-240x158.jpg" alt=""></a>
+                        </figure>
+                    </div>
+                    <h3><a data-type="title" onclick="gaEvent('Kantipur Top News','Clicked','लुम्बिनीमा विद्युतीय बस सञ्चालन आजदेखि')" href="https://ekantipur.com/business/2022/09/29/166441366455012642.html">लुम्बिनीमा विद्युतीय बस सञ्चालन आजदेखि</a></h3>
+                </article>
+            </div>
+            <div class="more-main-news">
+                <div class="col-xs-5 col-sm-5 col-md-5" data-sort-order="3">
+                    <article class="normal ui-draggable ui-draggable-handle ui-droppable" attr-newsid="9600504" style="display: inline-block;" id="UezgYTD">
+                        <h2><a data-type="title" onclick="gaEvent('Kantipur Top News','Clicked','चारै दाजुभाइ फुटबलमा')" href="https://ekantipur.com/sports/2022/09/29/166441485583048509.html">चारै दाजुभाइ फुटबलमा</a></h2>
+                        <p class="" data-type="summary" id="2" style="position: relative;" spellcheck="false">धरानमा हुने अधिकांश फुटबल प्रतियोगितामा ठुल्दाइ आशिष राई जर्सी र फुटबल बुट लगाएर घरदेखि निस्कनासाथ उनका भाइहरू अमृत, सुजन र रविन पनि पछ्याउँछन् । चारभाइ फुटबल ड्रेसमा निस्कँदा धरान १७ रेल्वेवासीले नियालेर हेर्दै लख काट्छन्, आज
+                            कतै प्रतियोगिता हुँदै छ । चारै भाइले एकै रंगको जर्सी लगाउनुको अर्थ हो उनीहरू फुटबल प्रतियोगिताहरूमा सँगै हुन्छन् ।</p>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <div class="meta-links"><a data-type="save-news" style="cursor:pointer;" class="saveNewsLink" attr-newsid="9600504" onclick="saveNews('9600504',this);"><i class="icon-save"></i> संग्रह</a>
+                            <a class="shareText" data-type="share-news" style="cursor:pointer;" onclick="fbShare('https://ekantipur.com/sports/2022/09/29/166441485583048509.html','चारै दाजुभाइ फुटबलमा');"> <i class="icon-share"></i> सेयर</a>
+                        </div>
+                    </article>
+                    <article data-sort-order="14" class="normal ui-draggable ui-draggable-handle ui-droppable" attr-newsid="9600501" style="display: inline-block;" id="u0nElZG">
+                        <h2><a data-type="title" onclick="gaEvent('Kantipur Top News','Clicked','वाग्मती प्रदेशका मुख्यमन्त्रीलाई मातृशोक')" href="https://ekantipur.com/pradesh-3/2022/09/29/166441444158633105.html">वाग्मती प्रदेशका मुख्यमन्त्रीलाई मातृशोक</a></h2>
+                        <p class="" data-type="summary" id="2" style="position: relative;" spellcheck="false">वाग्मती प्रदेशका मुख्यमन्त्री राजेन्द्र पाण्डे र एमालेका उपाध्यक्ष सुरेन्द्र पाण्डेकी आमा मनमाया पाण्डेको ८७ वर्षको उमेरमा निधन भएको छ ।</p>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: -0.994318px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: -0.994318px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <div class="meta-links"><a data-type="save-news" style="cursor:pointer;" class="saveNewsLink" attr-newsid="9600501" onclick="saveNews('9600501',this);"><i class="icon-save"></i> संग्रह</a>
+                            <a class="shareText" data-type="share-news" style="cursor:pointer;" onclick="fbShare('https://ekantipur.com/pradesh-3/2022/09/29/166441444158633105.html','वाग्मती प्रदेशका मुख्यमन्त्रीलाई मातृशोक');"> <i class="icon-share"></i> सेयर</a>
+                        </div>
+                    </article>
+                    <div class="pnl-control actions pull-left"><a class="" onclick="MainLayout.addNewsBox(this);" title="Add Article"><i class="icon-plus font-blue"></i></a><a class="" onclick="MainLayout.removeNewsBox(this);" title="Delete Article"><i class="icon-close"></i></a></div>
+                </div>
+                <div class="col-xs-7 col-sm-7 col-md-7" data-sort-order="4">
+                    <article class="normal ui-draggable ui-draggable-handle ui-droppable" attr-newsid="9600506" style="display: inline-block;" id="XwPO6wK">
+                        <h2><a data-type="title" onclick="gaEvent('Kantipur Top News','Clicked','मकवानपुरगढी महिला भलिबल च्याम्पियन')" href="https://ekantipur.com/sports/2022/09/29/166441487995543375.html">मकवानपुरगढी महिला भलिबल च्याम्पियन</a></h2>
+                        <div class="image" data-type="image" data-image-size="240x158">
+                            <figure>
+                                <a href="https://ekantipur.com/sports/2022/09/29/166441487995543375.html"><img src="//assets-cdn.kantipurdaily.com/uploads/source/news/kantipur/2022/sports/166436802679312809389ka-2992022033347-240x158.jpg" alt=""></a>
+                            </figure>
+                        </div>
+                        <p class="" data-type="summary" id="5" style="position: relative;" spellcheck="false">मकवानपुरगढी गाउँपालिकाले मकवानपुर जिल्लास्तरीय महिला भलिबलको उपाधि जितेको छ । बुधबार हुप्रचौरमा भएको फाइनलमा बकैया गाउँपालिकालाई २५–१५, २५–१९, २५–१३ को सोझो सेटमा पराजित गर्दै मकवानपुरगढीले उपाधि जितेको हो ।</p>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <div class="meta-links"><a data-type="save-news" style="cursor:pointer;" class="saveNewsLink" attr-newsid="9600506" onclick="saveNews('9600506',this);"><i class="icon-save"></i> संग्रह</a>
+                            <a class="shareText" data-type="share-news" style="cursor:pointer;" onclick="fbShare('https://ekantipur.com/sports/2022/09/29/166441487995543375.html','मकवानपुरगढी महिला भलिबल च्याम्पियन');"> <i class="icon-share"></i> सेयर</a>
+                        </div>
+                    </article>
+                    <article data-sort-order="12" class="normal ui-draggable ui-draggable-handle ui-droppable" attr-newsid="9600497" style="display: inline-block;" id="vlOpRsJ">
+                        <h2><a data-type="title" onclick="gaEvent('Kantipur Top News','Clicked','राजस्व परामर्श समिति खारेज')" href="https://ekantipur.com/business/2022/09/29/166441349810181841.html">राजस्व परामर्श समिति खारेज</a></h2>
+                        <div class="image" data-type="image" data-image-size="240x158">
+                            <figure>
+                                <a href="https://ekantipur.com/business/2022/09/29/166441349810181841.html"><img src="//assets-cdn.kantipurdaily.com/uploads/source/news/kantipur/2022/third-party/gyanendra-bahadur-karki-2672022021947-240x158.jpg" alt=""></a>
+                            </figure>
+                        </div>
+                        <p class="" data-type="summary" id="5" style="position: relative;" spellcheck="false">सरकारले नेपाल राजस्व परामर्श समिति खारेज गरेको छ । गत मंगलबारको मन्त्रिपरिषद् बैठकले समिति खारेज गर्ने निर्णय गरेको सरकारका प्रवक्ता एवं सञ्चार तथा सूचना प्रविधि मन्त्री ज्ञानेन्द्रबहादुर कार्कीले बताए ।</p>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <grammarly-extension data-grammarly-shadow-root="true" style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT"></grammarly-extension>
+                        <div class="meta-links"><a data-type="save-news" style="cursor:pointer;" class="saveNewsLink" attr-newsid="9600497" onclick="saveNews('9600497',this);"><i class="icon-save"></i> संग्रह</a>
+                            <a class="shareText" data-type="share-news" style="cursor:pointer;" onclick="fbShare('https://ekantipur.com/business/2022/09/29/166441349810181841.html','राजस्व परामर्श समिति खारेज');"> <i class="icon-share"></i> सेयर</a>
+                        </div>
+                    </article>
+                    <div class="pnl-control actions pull-right"><a class="" onclick="MainLayout.addNewsBox(this);" title="Add Article"><i class="icon-plus font-blue"></i></a><a class="" onclick="MainLayout.removeNewsBox(this);" title="Delete Article"><i class="icon-close"></i></a></div>
+                </div>
+            </div>
+        </section>
+        <style type="text/css">
+            article.sponsored {
+                padding: 10px;
+                background: #eee;
+            }
+        </style>
+
+    </main>
+    </div>
+    <style>
+        .ek-game-score-heading {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #f6f6f6;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .ek-game-score-heading h4 {
+            font-size: 16px;
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+        
+        .ek-game-score {
+            border: 1px solid #e9e9e9;
+            padding: 0.8em;
+            background: #ffffff;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        
+        .ek-game-score .row {
+            margin: 0;
+        }
+        
+        .ek-game-score .col-sm-4 {
+            text-align: center;
+            padding: 0;
+        }
+        
+        .ek-game-score .col-sm-4 span {
+            margin-top: 10px;
+            display: block;
+            font-size: 16px;
+        }
+        
+        .country-img {
+            height: 54px;
+            width: 54px;
+            border-radius: 50%;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+        
+        .country-img .country-img-inner {
+            width: 50px;
+            height: 50px;
+            overflow: hidden;
+            border-radius: 50%;
+        }
+        
+        .country-img .country-img-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .ek-goal-score {
+            font-size: 28px!important;
+            color: #0F6EB1;
+            padding-top: 3px;
+        }
+        
+        .time-status {
+            /*padding: 4px;background: rgb(15 110 177 / 10%);border: 1px solid rgb(15 110 177 / 30%);*/
+            overflow: hidden;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+        
+        .local-election-widget {
+            margin-top: 20px;
+        }
+    </style>
+    <aside id="blockLayout" onscroll="lazyLoad();" class="col-xs-4 col-sm-4 col-md-4 scrollable ">
+        <div class="cat_name first" style="margin-top: 15px;"><br><a href="https://ekantipur.com/bichar-bibidha">विचार/विविधा</a></div><a class="toggle" href="javascript:;" onclick="toggleOpedSection();"><i class="icon-arrow-r"></i></a>
+        <div class="item">
+            <div class="cat_name"><a href="https://ekantipur.com/opinion">विचार</a></div>
+            <h2><a onclick="gaEvent('Kantipur Oped in Homepage','Clicked','जब वामपन्थी असफल हुन्छन्');" href="https://ekantipur.com/opinion/2022/09/29/166441592701468216.html">जब वामपन्थी असफल हुन्छन्</a></h2>
+            <div class="image">
+                <figure><i class="icon-profile oped"></i></figure>
+                <figcaption><span></span><time>&#2310;&#2358;&#2381;&#2357;&#2367;&#2344; &#2407;&#2409;, २०७९</time></figcaption>
+            </div>
+            <p>गएको आइतबार इटालीमा सम्पन्न निर्वाचनमा फासीवादी रुझान राख्ने दल ब्रदर्स अफ इटाली र उसका दक्षिणपन्थी सहयोगीहरूको गठबन्धनले बहुमत हासिल गर्‍यो । ब्रदर्स अफ इटालीकी नेता जोर्जिय...</p>
+        </div>
+        <div class="item">
+            <div class="cat_name"><a href="https://ekantipur.com/opinion">विचार</a></div>
+            <h2><a onclick="gaEvent('Kantipur Oped in Homepage','Clicked','मुटु र खानपिनबीच सन्तुलन');" href="https://ekantipur.com/opinion/2022/09/29/166441627573365737.html">मुटु र खानपिनबीच सन्तुलन</a></h2>
+            <div class="image">
+                <figure><i class="icon-profile oped"></i></figure>
+                <figcaption><span></span><time>&#2310;&#2358;&#2381;&#2357;&#2367;&#2344; &#2407;&#2409;, २०७९</time></figcaption>
+            </div>
+            <p>हरेक २९ सेप्टेम्बरमा विश्व मुटु दिवस मनाइन्छ, यसपालिको नारा छ— ‘युज हार्ट फर एभ्री हार्ट ।’ संसारभरि मुटुरोगका कारण १८.६ मिलियन मानिसको अकालमा मृत्यु भइरहेको छ ।...</p>
+        </div>
+        <div class="item">
+            <div class="cat_name"><a href="https://ekantipur.com/opinion">विचार</a></div>
+            <h2><a onclick="gaEvent('Kantipur Oped in Homepage','Clicked','आसन्न चुनावमा गान्धीगिरी !');" href="https://ekantipur.com/opinion/2022/09/29/166441598628192612.html">आसन्न चुनावमा गान्धीगिरी !</a></h2>
+            <div class="image">
+                <figure><i class="icon-profile oped"></i></figure>
+                <figcaption><span></span><time>&#2310;&#2358;&#2381;&#2357;&#2367;&#2344; &#2407;&#2409;, २०७९</time></figcaption>
+            </div>
+            <p>दक्षिण अफ्रिकी मुक्ति संग्रामका अगुवा नेल्सन मण्डेलालाई जब रोबेन आइल्यान्डमा कैद गरिएको थियो, त्यतिखेर उनीमाथि हिंसक अपराधहरूको मुद्दा थियो । त्यो कारागार असाध्यै कठोर सजाय भोग्नेहरूका...</p>
+        </div>
+        <div class="item">
+            <div class="cat_name"><a href="https://ekantipur.com/opinion">विचार</a></div>
+            <h2><a onclick="gaEvent('Kantipur Oped in Homepage','Clicked','लोकतन्त्रको सबलताका लागि तथ्यांक');" href="https://ekantipur.com/opinion/2022/09/29/166441608384095703.html">लोकतन्त्रको सबलताका लागि तथ्यांक</a></h2>
+            <div class="image">
+                <figure><i class="icon-profile oped"></i></figure>
+                <figcaption><span></span><time>&#2310;&#2358;&#2381;&#2357;&#2367;&#2344; &#2407;&#2409;, २०७९</time></figcaption>
+            </div>
+            <p>२०७९ वैशाख ३० गते सम्पन्न नेपालको दोस्रो स्थानीय तह निर्वाचनको सफलताले सकारात्मक सन्देश दिएको छ । तर, सहभागिता तथा प्रतिनिधित्वको हिसाबले यो निर्वाचन प्रक्रियाले केही अनपेक्षित...</p>
+        </div>
+        <div class="item">
+            <div class="cat_name"><a href="https://ekantipur.com/opinion">विचार</a></div>
+            <h2><a onclick="gaEvent('Kantipur Oped in Homepage','Clicked','कार्कीलाई प्रधानन्यायाधीशकै सुविधाले निम्त्याउने अनर्थ');" href="https://ekantipur.com/opinion/2022/09/29/16644156104089615.html">कार्कीलाई प्रधानन्यायाधीशकै सुविधाले निम्त्याउने अनर्थ</a></h2>
+            <div class="image">
+                <figure><i class="icon-profile oped"></i></figure>
+                <figcaption><span></span><time>&#2310;&#2358;&#2381;&#2357;&#2367;&#2344; &#2407;&#2409;, २०७९</time></figcaption>
+            </div>
+            <p>छ महिनाभन्दा बढी कायम मुकायम (कामु) प्रधानन्यायाधीश भएका व्यक्तिलाई प्रधानन्यायाधीशसरह सुविधा दिने भनी असोज ३ गते मन्त्रिपरिषद्ले गरेको निर्णय प्रथम दृष्टिमै खारेजयोग्य छ । कामु प्रधानन्यायाधीश...</p>
+        </div>
+        <div class="item">
+            <div class="cat_name"><a href="https://ekantipur.com/bibidha">विविधा</a></div>
+            <h2><a onclick="gaEvent('Kantipur Oped in Homepage','Clicked','‘अस्ट्रेलिया जान्छुभन्दा ५०/६० लाखसम्म पाइन्छ तर व्यापार गर्छुभन्दा पैसै पाइँदैन’');" href="https://ekantipur.com/bibidha/2022/09/28/166434917939734526.html">‘अस्ट्रेलिया जान्छुभन्दा ५०/६० लाखसम्म पाइन्छ तर व्यापार गर्छुभन्दा पैसै पाइँदैन’</a></h2>
+            <div class="image">
+                <figure><i class="icon-profile oped"></i></figure>
+                <figcaption><span></span><time>&#2310;&#2358;&#2381;&#2357;&#2367;&#2344; &#2407;&#2408;, २०७९</time></figcaption>
+            </div>
+            <p>विगत ४/५ वर्ष काम गरेको अनुभवले भन्नुपर्दा सर्वप्रथम मानव संशाधन छैन&nbsp;। दक्ष मान्छे छैन&nbsp;। स्टार्टअप भनेको प्रशिक्षण तथा विकासको संस्थाजस्तै भएको छ&nbsp;।...</p>
+        </div>
+        <div class="item">
+            <div class="cat_name"><a href="https://ekantipur.com/bibidha">विविधा</a></div>
+            <h2><a onclick="gaEvent('Kantipur Oped in Homepage','Clicked','‘कच्चा पदार्थको कर र अन्तशुल्क परिवर्तन गरे औद्योगिक क्षेत्र कमजोर हुन्छ’');" href="https://ekantipur.com/bibidha/2022/09/28/166434155250292604.html">‘कच्चा पदार्थको कर र अन्तशुल्क परिवर्तन गरे औद्योगिक क्षेत्र कमजोर हुन्छ’</a></h2>
+            <div class="image">
+                <figure><i class="icon-profile oped"></i></figure>
+                <figcaption><span></span><time>&#2310;&#2358;&#2381;&#2357;&#2367;&#2344; &#2407;&#2408;, २०७९</time></figcaption>
+            </div>
+            <p>प्रधानमन्त्री उत्पादन गर्ने क्षेत्र विराटनगर भनिएको छ&nbsp;। २००७ देखि २०७९ सालसम्म विराटनगरबाट ९ जना प्रधानमन्त्री, ३/४ वटा अर्थमन्त्री बनिसकेका छन्&nbsp;। प्रधानमन्त्रीले कति वर्ष...</p>
+        </div>
+        <div class="item">
+            <div class="cat_name"><a href="https://ekantipur.com/bibidha">विविधा</a></div>
+            <h2><a onclick="gaEvent('Kantipur Oped in Homepage','Clicked','‘ठूलो घर, भव्य ठाउँ र पिच सडक हुँदैमा सहर बन्दैन’');" href="https://ekantipur.com/bibidha/2022/09/28/166434743246122965.html">‘ठूलो घर, भव्य ठाउँ र पिच सडक हुँदैमा सहर बन्दैन’</a></h2>
+            <div class="image">
+                <figure><i class="icon-profile oped"></i></figure>
+                <figcaption><span></span><time>&#2310;&#2358;&#2381;&#2357;&#2367;&#2344; &#2407;&#2408;, २०७९</time></figcaption>
+            </div>
+            <p>हामी बदलिँदो सहरको विषयमा कुरा गर्दैछौं, गर्छौं&nbsp;। यहाँ सहभागीको उपस्थिति हेर्दा बन्दै गरेको सहरमा गरेको भए राम्रो हुन्थ्यो कि&nbsp;। सहरमा कलाको कुरा, जीवनको...</p>
+        </div>
+        <div class="item">
+            <div class="cat_name"><a href="https://ekantipur.com/opinion">विचार</a></div>
+            <h2><a onclick="gaEvent('Kantipur Oped in Homepage','Clicked','उम्मेदवार चयनका सूत्र');" href="https://ekantipur.com/opinion/2022/09/28/16643319916201151.html">उम्मेदवार चयनका सूत्र</a></h2>
+            <div class="image">
+                <figure><i class="icon-profile oped"></i></figure>
+                <figcaption><span></span><time>&#2310;&#2358;&#2381;&#2357;&#2367;&#2344; &#2407;&#2408;, २०७९</time></figcaption>
+            </div>
+            <p>उम्मेदवारी घोषणा भएका खबरहरू धमाधम सार्वजनिक हुन थालेका छन् । दल दर्ताको प्रक्रिया चलिरहेको र दलहरूले आफ्ना उम्मेदवार तय नगरिसकेकाले यी सबैजसो स्वघोषित उम्मेदवार नै हुन् ।...</p>
+        </div>
+        <div class="item">
+            <div class="cat_name"><a href="https://ekantipur.com/opinion">विचार</a></div>
+            <h2><a onclick="gaEvent('Kantipur Oped in Homepage','Clicked','भारतमा अमृतकाल कि विनाशकाल ?');" href="https://ekantipur.com/opinion/2022/09/28/16643321459862244.html">भारतमा अमृतकाल कि विनाशकाल&nbsp;?</a></h2>
+            <div class="image">
+                <figure><i class="icon-profile oped"></i></figure>
+                <figcaption><span></span><time>&#2310;&#2358;&#2381;&#2357;&#2367;&#2344; &#2407;&#2408;, २०७९</time></figcaption>
+            </div>
+            <p>यतिखेर भारतमा सरकारी घोषणा अनुसार स्वाधीनताको अमृतकाल चलिरहेको छ । भारत स्वाधीन भएको ७५ वर्ष पूरा भएको उपलक्ष्यमा भाजपा सरकारले गरेको यस घोषणालाई विपक्षी दलले ‘भाजपाको...</p>
+        </div>
+    </aside>
+    <style>
+        aside .toggle {
+            right: inherit;
+            left: 17px;
+        }
+    </style>
+    <script>
+        function toggleOpedSection() {
+            if (document.getElementById('blockLayout').classList.contains('oped-toggle')) {
+                document.getElementById('blockLayout').classList.remove('oped-toggle');
+                document.getElementById('header').classList.remove('oped-toggle');
+                document.getElementById('wrapper').classList.remove('oped-toggle');
+            } else {
+                document.getElementById('blockLayout').classList.add('oped-toggle');
+                document.getElementById('header').classList.add('oped-toggle');
+                document.getElementById('wrapper').classList.add('oped-toggle');
+            }
+        }
+    </script>
+    <style>
+        #txer3tMessage.textarea {
+            font-size: 13px;
+            margin-top: 0.5em;
+            border: 1px solid #ddd;
+            width: 285px;
+            padding: 0.5em;
+            min-height: 80px;
+            font-family: Mukta;
+        }
+    </style>
+
+    <script type='text/javascript' src='https://jcss-cdn-npa.kantipurdaily.com/kantipurdaily/js/commonv181.js'></script>
+    <link rel="manifest" href="/manifest.json">
+
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+    <style type="text/css">
+        span.box-close {
+            display: block;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #000;
+            text-align: center;
+            line-height: 19px;
+            border-radius: 50%;
+            float: right;
+            position: absolute;
+            z-index: 55;
+            right: 0;
+            top: 0;
+            background: #000;
+            color: #fff;
+            cursor: pointer;
+        }
+        
+        .swiper-container {
+            width: 160px;
+            height: 160px;
+        }
+        
+        .box-sponsored {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 8;
+        }
+    </style>
+
+
+    <div id="browser-message">
+        <div class="msg-wrap">Your browser is too old or not supported by eKantipur.<br />Please <a href="https://www.downloadbrowser.org/" title="Download the Most Latest Browsers - You deserve a better.">upgrade your browser</a> to improve your experience.
+            <div class="alert-close" onclick="closeAlert('browser-message');"><i class="icon-close"></i></div>
+        </div>
+    </div>
+    </div>
+
+</body>
+
+</html>
