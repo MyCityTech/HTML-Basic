@@ -19,7 +19,7 @@
     </style>
     <script>
         let arr = []
-        let ht = ``
+
         let pl = 0
 
         function test() {
@@ -71,46 +71,36 @@
                 "Remark": remark
             })
             console.log('Array', arr)
-            localStorage.setItem('object', JSON.stringify({
-                "Full Name": fullName,
-                "Email": email,
-                "Address": address,
-                "Phone": phone,
-                "Salary": salary,
-                "Date Of Joining": dob,
-                "Working": 'working',
-                "Designation": designtion,
-                "Remark": remark
-            }))
+            localStorage.setItem('object', JSON.stringify(arr))
+
+
+            let ht = ``
             var d = JSON.parse(localStorage.getItem('object'));
             console.table(d);
+            for (var i = 0; i < d.length; i++) {
 
-            ht = ht + `
-                <tr>
-                    <th scope="row">1</th>
-                    <td id="t1">${d['Full Name']}</td>
-                    <td id="t2">${d['Email']}</td>
-                    <td id="t3">${d['Address']}</td>
-                    <td id="t4">${d['Phone']}</td>
-                    <td id="t5">${d['Salary']}</td>
-                    <td id="t6">${d['Date Of Joining']}</td>
-                    <td id="t7">${d['Working']}</td>
-                    <td id="t8">${d['Designation']}</td>
-                    <td id="t9">${d['Remark']}</td>
-                </tr>`
-            document.getElementById('tabCont').innerHTML = ht
 
-            /*
-                        document.getElementById('t1').innerText = d['Full Name']
-                        document.getElementById('t2').innerText = d['Email'];
-                        document.getElementById('t3').innerText = d['Address'];
-                        document.getElementById('t4').innerText = d['Phone'];
-                        document.getElementById('t5').innerText = d['Salary'];
-                        document.getElementById('t6').innerText = d['Date Of Joining']
-                        document.getElementById('t7').innerText = d['Working']
-                        document.getElementById('t8').innerText = d['Designation']
-                        */
+                ht = ht + `
+                        <tr>
+                            <th scope="row">1</th>
+                            <td id="t1">${d[i]['Full Name']}</td>
+                            <td id="t2">${d[i]['Email']}</td>
+                            <td id="t3">${d[i]['Address']}</td>
+                            <td id="t4">${d[i]['Phone']}</td>
+                            <td id="t5">${d[i]['Salary']}</td>
+                            <td id="t6">${d[i]['Date Of Joining']}</td>
+                            <td id="t7">${d[i]['Working']}</td>
+                            <td id="t8">${d[i]['Designation']}</td>
+                            <td id="t9">${d[i]['Remark']}</td>
+                        </tr>`
+            }
+            console.log(ht)
+
+            document.getElementById('tabCont').innerHTML(ht)
         }
+
+
+        // = ht
     </script>
 </head>
 
